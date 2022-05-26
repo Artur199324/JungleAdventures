@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
     ConstraintLayout cooooJa;
     ImageView immm;
     public static ViewJA viewJA;
-    ArrayList<ImageView> arrayListJA;
+
+    ArrayList<ImgCl> arrayListJAV;
     ArrayList<ImgCl> arrayListImgCl;
     ArrayList<ImgCl> arrayList1;
     ArrayList<ImgCl> arrayList2;
     ArrayList<ImgCl> arrayList3;
     ArrayList<ImgCl> arrayList4;
-    ArrayList<ImgCl> arrayList5;
     boolean startMovJA = false;
     Handler handler;
     ImgCl imgCl;
@@ -53,18 +53,19 @@ public class MainActivity extends AppCompatActivity {
         handler = new Handler();
         cooooJa = findViewById(R.id.cooooJa);
         viewJA = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(ViewJA.class);
-        arrayListJA = new ArrayList<>();
         arrayListImgCl = new ArrayList<>();
         arrayList1 = new ArrayList<>();
         arrayList2 = new ArrayList<>();
         arrayList3 = new ArrayList<>();
         arrayList4 = new ArrayList<>();
-        arrayList5 = new ArrayList<>();
+        arrayListJAV = new ArrayList<>();
         coo();
         mmm();
         jh();
         sww();
         od();
+        oos();
+        pp();
         gg = (displayJA.getWidth() / 4) - immm.getWidth() / 2;
 
 
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                 if (viewJA.getStart()) {
                     startMovJA = false;
                     arrayListImgCl.add(imgCl);
+                    arrayListJAV.add(imgCl);
                     coo();
                     viewJA.startingMoveJA(false);
                 }
@@ -158,6 +160,143 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    ImageView imageView = null;
+    ImageView imageView2 = null;
+    ImageView imageView3 = null;
+    ImageView imageView4 = null;
+
+
+
+    public void  pp(){
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (arrayListJAV.size() > 2) {
+
+                    for (int i = 0; i < arrayListJAV.size(); i++) {
+                        if (arrayListJAV.get(i).getCoaX() == 1) {
+                            imageView = arrayListJAV.get(i).getImageView();
+
+                            Log.d("qqq", "1");
+                        }
+                        if (arrayListJAV.get(i).getCoaX() == 2) {
+                            imageView2 = arrayListJAV.get(i).getImageView();
+                            Log.d("qqq", "2");
+
+                        }
+                        if (arrayListJAV.get(i).getCoaX() == 3) {
+                            imageView3 = arrayListJAV.get(i).getImageView();
+                            Log.d("qqq", "3");
+
+                        }
+                        if (arrayListJAV.get(i).getCoaX() == 4) {
+                            imageView4 = arrayListJAV.get(i).getImageView();
+                            Log.d("qqq", "4");
+
+                        }
+
+                        if (imageView4 !=null && imageView3 !=null && imageView2 !=null){
+                            Log.d("eee", "1");
+                            if (imageView2.getY() == imageView4.getY() && imageView2.getY() == imageView3.getY()){
+                                Log.d("eee", "2");
+                                if (imageView2.getTag() == imageView4.getTag() && imageView2.getTag() == imageView3.getTag()){
+                                    Log.d("eee", "3");
+                                    imageView4.setVisibility(View.INVISIBLE);
+                                    imageView3.setVisibility(View.INVISIBLE);
+                                    imageView2.setVisibility(View.INVISIBLE);
+                                    Log.d("eee","11");
+
+                                }
+                            }
+                        }
+                        if (arrayListJAV.get(i).getImageView().getVisibility() == View.INVISIBLE){
+                            cooooJa.removeView(arrayListJAV.get(i).getImageView());
+                            arrayListJAV.remove(i);
+
+
+                        }
+                    }
+
+
+                }
+                if (ii) {
+                    handler.postDelayed(this::run, 10);
+                }
+            }
+        });
+
+    }
+
+    public void oos() {
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (arrayListJAV.size() > 2) {
+
+                    for (int i = 0; i < arrayListJAV.size(); i++) {
+                        if (arrayListJAV.get(i).getCoaX() == 1) {
+                            imageView = arrayListJAV.get(i).getImageView();
+
+                            Log.d("qqq", "1");
+                        }
+                        if (arrayListJAV.get(i).getCoaX() == 2) {
+                            imageView2 = arrayListJAV.get(i).getImageView();
+                            Log.d("qqq", "2");
+
+                        }
+                        if (arrayListJAV.get(i).getCoaX() == 3) {
+                            imageView3 = arrayListJAV.get(i).getImageView();
+                            Log.d("qqq", "3");
+
+                        }
+                        if (arrayListJAV.get(i).getCoaX() == 4) {
+                            imageView4 = arrayListJAV.get(i).getImageView();
+                            Log.d("qqq", "4");
+
+                        }
+
+                        if (imageView != null && imageView2 != null && imageView3 != null) {
+                            Log.d("eee", "1");
+                            if (imageView.getY() == imageView2.getY() && imageView3.getY() == imageView2.getY()) {
+                                Log.d("eee", "2");
+                                if (imageView.getTag() == imageView2.getTag() && imageView.getTag() == imageView3.getTag()) {
+                                    imageView.setVisibility(View.INVISIBLE);
+                                    imageView2.setVisibility(View.INVISIBLE);
+                                    imageView3.setVisibility(View.INVISIBLE);
+                                    Log.d("eee", "3");
+                                }
+                            }
+
+                        }
+
+
+
+                        if (arrayListJAV.get(i).getImageView().getVisibility() == View.INVISIBLE){
+                            cooooJa.removeView(arrayListJAV.get(i).getImageView());
+                            arrayListJAV.remove(i);
+                            Log.d("qqq", "6");
+
+                        }
+
+
+                    }
+
+
+
+
+                }
+                if (ii) {
+                    handler.postDelayed(this::run, 10);
+                }
+            }
+        });
+    }
+
+
+
+
+
 
     public void jh() {
 
@@ -189,7 +328,6 @@ public class MainActivity extends AppCompatActivity {
                                         if (arrayList1.size() == 2) {
                                             ij(arrayList1);
                                             arrayList1 = new ArrayList<>();
-                                            arrayList5.add(imgCl);
                                             imgCl.getImageView().setVisibility(View.INVISIBLE);
                                         } else {
                                             if (arrayList1.size() > 1) {
@@ -230,7 +368,6 @@ public class MainActivity extends AppCompatActivity {
                                             ij(arrayList2);
 
                                             arrayList2 = new ArrayList<>();
-                                            arrayList5.add(imgCl);
                                             imgCl.getImageView().setVisibility(View.INVISIBLE);
                                         } else {
                                             if (arrayList1.size() > 1) {
@@ -272,7 +409,6 @@ public class MainActivity extends AppCompatActivity {
                                             ij(arrayList3);
 
                                             arrayList3 = new ArrayList<>();
-                                            arrayList5.add(imgCl);
                                             imgCl.getImageView().setVisibility(View.INVISIBLE);
 
                                         } else {
@@ -280,7 +416,7 @@ public class MainActivity extends AppCompatActivity {
 
                                         }
                                         arrayListImgCl.remove(imgCl1);
-                                        arrayListImgCl.remove(imgCl);
+
                                     } else {
                                         if (imgCl1.getImageView().getX() == immm.getX()) {
                                             if (imgCl1.getImageView().getY() <= immm.getY()) {
@@ -310,7 +446,6 @@ public class MainActivity extends AppCompatActivity {
                                         if (arrayList4.size() == 2) {
                                             ij(arrayList4);
                                             arrayList4 = new ArrayList<>();
-                                            arrayList5.add(imgCl);
                                             imgCl.getImageView().setVisibility(View.INVISIBLE);
 
                                         } else {

@@ -22,6 +22,7 @@ public class CreatJA {
         int h = random.nextInt(6);
         int n = random.nextInt(4);
 
+
         if (h == 0){
             imageView.setImageResource(R.drawable.nnn1);
             imageView.setTag(1);
